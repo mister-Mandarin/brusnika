@@ -1,0 +1,119 @@
+---
+import Footer from "@components/Footer.astro";
+import Header from "@components/Header.astro";
+import SEO from "@components/SEO.astro";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+
+// const { title, description, permalink } = Astro.props;
+const title = "Отдых на берегу Прони — аренда домов и бани в Пронске";
+const description =
+  "Аренда уютных домиков и настоящей бани посуточно в Пронске на берегу реки Проня. Отдых в уникальном месте, всего в 69 км от Рязани. Бронирование онлайн";
+const permalink = `${Astro.site?.href}`;
+---
+
+<html lang="ru">
+  <head>
+    <SEO title={title} description={description} permalink={permalink} />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style lang="scss" is:global>
+  @use "webcoreui/styles" as *;
+  @use "webcoreui/config" as *;
+  @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,600;1,600&family=Raleway:ital,wght@0,800;1,800&display=swap");
+
+  @include setup(
+    (
+      theme: "light",
+      includeResets: true,
+      includeUtilities: true,
+      includeTooltip: true,
+      // includeScrollbarStyles: true,
+       // includeBreakpoints: true
+    )
+  );
+
+  * {
+    margin: 0;
+    font-weight: 600;
+
+    font-family: "Montserrat", sans-serif;
+  }
+
+  html,
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: black;
+    @include typography(sm);
+    scroll-behavior: smooth;
+
+    @include media(xs) {
+      @include typography(default);
+    }
+
+    --w-tooltip-background: #fff;
+    --w-tooltip-color: #000;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 800;
+    font-family: "Raleway", sans-serif;
+  }
+
+  h1 {
+    @include typography(3xl); // Например, 32px
+  }
+  h2 {
+    @include typography(2xl); // 28px
+  }
+  h3 {
+    @include typography(xl); // 24px
+  }
+  h4 {
+    @include typography(lg); // 21px
+  }
+  h5 {
+    @include typography(md); // 18px
+  }
+  h6 {
+    @include typography(default); // 16px
+  }
+
+  button {
+    font-weight: 400;
+    font-family: "Montserrat", sans-serif;
+  }
+
+  main {
+    flex: 1; /* Оставляем, чтобы он толкал футер вниз */
+    width: 100%; /* Убедимся, что он на всю ширину */
+  }
+
+  /* Наш класс-обертка */
+  .wrapper {
+    position: relative;
+    margin: 0 auto;
+    padding: 0.7rem;
+    width: 100%;
+    max-width: 1400px;
+    height: 100%;
+  }
+
+  .anchor {
+    scroll-margin-top: 4.5rem;
+  }
+</style>
