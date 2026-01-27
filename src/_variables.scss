@@ -1,0 +1,35 @@
+$font-main: "Golos Text", sans-serif;
+$font-secondary: "Inter", sans-serif;
+$font-tertiary: "Oranienbaum", serif;
+
+$color-main: #25252C;
+
+:root {
+  --color-gray-100: hsl(220, 12%, 98%);
+  --color-gray-200: hsl(220, 12%, 90%);
+  --color-gray-300: hsl(220, 12%, 85%);
+  --color-gray-400: hsl(220, 12%, 65%);
+  --color-gray-500: hsl(220, 12%, 45%);
+
+  --color-dark-100: hsl(240, 10%, 15%);
+  --color-dark-200: hsl(240, 10%, 12%);
+  --color-dark-300: hsl(240, 10%, 9%);
+  --color-dark-400: hsl(240, 10%, 6%);
+  --color-dark-500: hsl(240, 10%, 3%);
+
+  --color-blue-100: hsl(217, 80%, 65%);
+  --color-blue-200: hsl(217, 80%, 60%);
+  --color-blue-300: hsl(217, 80%, 55%);
+  --color-blue-400: hsl(217, 80%, 50%);
+  --color-blue-500: hsl(217, 80%, 45%);
+
+  --shadow-small:
+    rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  --shadow-medium:
+    rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  --shadow-large:
+    rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+  --shadow-extra:
+    rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+    rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+}

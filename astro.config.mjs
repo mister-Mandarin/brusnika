@@ -16,4 +16,13 @@ export default defineConfig({
     // https://docs.astro.build/en/guides/styling/#bundle-control
     inlineStylesheets: "never",
   },
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@use "src/_variables.scss" as *;`,
+        },
+      },
+    },
+  },
 });
