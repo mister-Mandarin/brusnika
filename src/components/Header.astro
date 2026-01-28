@@ -21,14 +21,25 @@ import { Image } from "astro:assets";
         <li class="menu-item"><a href="#" class="menu-link">Контакты</a></li>
       </ul>
     </div>
-    <span class="overlay"></span>
-    <button type="button" class="menu-block">
-      <a href="#" class="btn btn-neutral">Оставить заявку</a>
+    <a href="#">
+        <i class="fa-solid fa-phone btn-phone"></i>
+      </a>
+    <button type="button" class="button">
+      <a href="#" class="btn btn-brown-dark">Заказать звонок</a>
     </button>
+    <span class="overlay"></span>
   </nav>
 </header>
 
 <style lang="scss">
+  .button {
+
+    @media screen and (max-width: 768px) {
+      display: none;
+      visibility: hidden;
+    }
+  }
+
   .btn {
     display: inline-flex;
     column-gap: 0.35rem;
@@ -36,33 +47,25 @@ import { Image } from "astro:assets";
     align-items: center;
     vertical-align: middle;
     transition: all 0.25s ease;
-    border-radius: 3rem;
+    border-radius: 0.25rem;
     padding-inline: 1.25rem;
     padding-block: 0.5rem;
-    font-weight: 500;
-    font-size: 1rem;
     line-height: 1.5;
-    font-family: inherit;
     text-align: center;
+    font-family: $font-main;
     white-space: nowrap;
 
-    &-primary {
+    &-brown-dark {
       box-shadow: var(--shadow-medium);
-      background-color: var(--color-blue-300);
+      background-color: $color-brown-dark;
       color: var(--color-gray-100);
     }
 
-    &-neutral {
-      box-shadow: var(--shadow-medium);
-      background-color: var(--color-gray-100);
-      color: var(--color-dark-300);
-    }
+  }
 
-    &-darken {
-      box-shadow: var(--shadow-medium);
-      background-color: var(--color-dark-100);
-      color: var(--color-gray-100);
-    }
+  .btn-phone {
+    color: $color-brown-dark;
+    font-size: 1.5rem;
   }
 
   // Header section
@@ -75,48 +78,34 @@ import { Image } from "astro:assets";
     margin: 0 auto;
     width: 100%;
     height: auto;
-
-    &.on-scroll {
-      box-shadow: var(--shadow-medium);
-      background-color: var(--color-dark-400);
-    }
+    box-shadow: $shadow-medium;
   }
 
   .navbar {
     display: flex;
-    column-gap: 1rem;
     flex-direction: row;
-    justify-content: baseline;
+    justify-content: space-between;
     align-items: center;
-    margin-inline: auto;
-    width: 100%;
-    height: 4rem;
-  }
-
-  .brand {
-    color: var(--color-gray-100);
-    font-weight: 600;
-    font-size: 1.5rem;
-    line-height: 1.5;
-    font-family: inherit;
-    text-transform: uppercase;
+    max-width: 100%;
   }
 
   .menu {
     position: fixed;
-    top: -100%;
-    left: 0;
+    left: -100%;
+    top: 65px;
     transition: all 0.3s ease;
     box-shadow: var(--shadow-medium);
-    background-color: var(--color-dark-400);
+    background-color: white;
     padding-block: 4rem;
     width: 100%;
     height: auto;
     overflow: hidden;
+    padding: 10px;
 
     &.is-active {
-      top: 0;
+      top: 50px;
       left: 0;
+      max-width: 50rem;
     }
 
     &-inner {
@@ -124,28 +113,27 @@ import { Image } from "astro:assets";
       row-gap: 1.25rem;
       flex-direction: column;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
     }
 
     &-link {
-      color: var(--color-gray-100);
+      color: $color-main;
       font-weight: 500;
-      font-size: 1rem;
-      line-height: 1.5;
-      font-family: inherit;
       text-transform: uppercase;
     }
 
     &-block {
-      margin-left: auto;
+      // margin-left: auto;
     }
 
     // Media query breakpoint
     @media screen and (min-width: 48rem) {
+      display: none;
+      visibility: hidden;
       position: relative;
       top: initial;
       transition: unset;
-      margin-left: auto;
+      // margin-left: auto;
       box-shadow: unset;
       background: unset;
       padding: 0;
@@ -155,15 +143,11 @@ import { Image } from "astro:assets";
         display: flex;
         column-gap: 2rem;
         flex-direction: row;
-        margin-inline: auto;
+        // margin-inline: auto;
       }
 
       &-link {
         text-transform: capitalize;
-      }
-
-      &-block {
-        margin-left: 2rem;
       }
     }
   }
@@ -180,10 +164,10 @@ import { Image } from "astro:assets";
     user-select: none;
 
     // Media query breakpoint
-    @media screen and (min-width: 48rem) {
-      display: none;
-      visibility: hidden;
-    }
+    // @media screen and (min-width: 48rem) {
+    //   display: none;
+    //   visibility: hidden;
+    // }
 
     &-line {
       display: block;
@@ -228,7 +212,7 @@ import { Image } from "astro:assets";
     position: fixed;
     opacity: 0.5;
     z-index: -2;
-    transition: all 0.3s ease;
+    transition: all 0.5s ease-in-out;
     inset: 0;
     background-color: black;
     width: 100%;
@@ -236,6 +220,7 @@ import { Image } from "astro:assets";
 
     &.is-active {
       display: block;
+      margin-top: 65px;
     }
   }
 </style>
@@ -264,11 +249,11 @@ import { Image } from "astro:assets";
   });
 
   // Оптимизированный скролл
-  window.addEventListener(
-    "scroll",
-    () => {
-      header.classList.toggle("on-scroll", window.scrollY >= 75);
-    },
-    { passive: true },
-  );
+  // window.addEventListener(
+  //   "scroll",
+  //   () => {
+  //     header.classList.toggle("on-scroll", window.scrollY >= 75);
+  //   },
+  //   { passive: true },
+  // );
 </script>
