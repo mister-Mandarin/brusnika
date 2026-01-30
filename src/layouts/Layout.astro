@@ -74,7 +74,7 @@ const permalink = `${Astro.site?.href}`;
     min-height: 100vh;
     color: $color-main;
     font-weight: 400;
-    font-size: clamp(0.75rem, 1vw + 0.75rem, 1.25rem);
+    font-size: clamp(0.875rem, 0.5vw + 0.75rem, 1rem);
     line-height: 1.5;
 
     font-family: $font-main;
@@ -99,7 +99,8 @@ const permalink = `${Astro.site?.href}`;
     @include typography(3xl); // Например, 32px
   }
   h2 {
-    @include typography(2xl); // 28px
+    // @include typography(2xl); // 28px
+    font-size: clamp(2rem, 5vw, 3.5rem);
   }
   h3 {
     @include typography(xl); // 24px
@@ -135,8 +136,6 @@ const permalink = `${Astro.site?.href}`;
 
   p,
   li {
-    line-height: 1.5;
-    font-family: inherit;
     text-wrap: pretty;
     word-wrap: break-word;
   }
@@ -166,4 +165,32 @@ const permalink = `${Astro.site?.href}`;
     height: auto;
   }
 
+  .button-hidden {
+    @media screen and (max-width: 768px) {
+      display: none;
+      visibility: hidden;
+    }
+  }
+
+  .btn {
+    display: inline-flex;
+    column-gap: 0.35rem;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    transition: all 0.25s ease;
+    border-radius: 0.25rem;
+    padding-inline: 1.25rem;
+    padding-block: 0.5rem;
+    line-height: 1.5;
+    font-family: $font-main;
+    text-align: center;
+    white-space: nowrap;
+
+    &-brown-dark {
+      box-shadow: var(--shadow-medium);
+      background-color: $color-brown-dark;
+      color: var(--color-gray-100);
+    }
+  }
 </style>

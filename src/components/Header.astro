@@ -33,35 +33,6 @@ import { Image } from "astro:assets";
 </header>
 
 <style lang="scss">
-  .button-hidden {
-    @media screen and (max-width: 768px) {
-      display: none;
-      visibility: hidden;
-    }
-  }
-
-  .btn {
-    display: inline-flex;
-    column-gap: 0.35rem;
-    justify-content: center;
-    align-items: center;
-    vertical-align: middle;
-    transition: all 0.25s ease;
-    border-radius: 0.25rem;
-    padding-inline: 1.25rem;
-    padding-block: 0.5rem;
-    line-height: 1.5;
-    font-family: $font-main;
-    text-align: center;
-    white-space: nowrap;
-
-    &-brown-dark {
-      box-shadow: var(--shadow-medium);
-      background-color: $color-brown-dark;
-      color: var(--color-gray-100);
-    }
-  }
-
   .btn-phone {
     color: $color-brown-dark;
     font-size: 1.5rem;
@@ -93,7 +64,7 @@ import { Image } from "astro:assets";
     position: fixed;
     top: 50px;
     left: -100%;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.5s ease-in-out;
     box-shadow: var(--shadow-medium);
     background-color: white;
     padding-block: 4rem;
@@ -207,19 +178,36 @@ import { Image } from "astro:assets";
     }
   }
 
+  // .overlay {
+  //   display: none;
+  //   position: fixed;
+  //   opacity: 0.5;
+  //   z-index: -2;
+  //   transition: all 0.3s ease-in-out;
+  //   inset: 0;
+  //   background-color: black;
+  //   width: 100%;
+  //   height: 100%;
+
+  //   &.is-active {
+  //     display: block;
+  //     margin-top: 50px;
+  //   }
+  // }
   .overlay {
-    display: none;
     position: fixed;
-    opacity: 0.5;
+    visibility: hidden;
+    opacity: 0;
     z-index: -2;
-    transition: all 0.3s ease-in-out;
+    transition:
+      opacity 0.3s ease-in-out,
+      visibility 0.3s ease-in-out;
     inset: 0;
     background-color: black;
-    width: 100%;
-    height: 100%;
 
     &.is-active {
-      display: block;
+      visibility: visible;
+      opacity: 0.5;
       margin-top: 50px;
     }
   }

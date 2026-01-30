@@ -1,0 +1,97 @@
+<section class="stats">
+  <div class="container">
+    <div class="stats__grid">
+      <div class="stats__item">
+        <div class="stats__number">25</div>
+        <p class="stats__text">
+          Лет успешного опыта строительства загородной недвижимости
+        </p>
+      </div>
+
+      <div class="stats__item">
+        <div class="stats__number">1051</div>
+        <p class="stats__text">
+          Га — площадь наших комфортных посёлков европейского класса
+        </p>
+      </div>
+
+      <div class="stats__item">
+        <div class="stats__number">5063</div>
+        <p class="stats__text">Счастливых владельцев загородных домов</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  // Переменные для удобства настройки
+  $color-accent: #e8a75e; // Оранжевый цвет из макета
+
+  .container {
+    margin-inline: auto;
+    margin: 0 auto;
+    padding: 0.5rem;
+    max-width: 90rem;
+    height: auto;
+  }
+
+  .stats {
+    padding: 2.5rem 0;
+
+    &__grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+      margin: 0 auto;
+      max-width: 1024px;
+    }
+
+    &__item {
+      position: relative;
+      flex: 1;
+      padding-top: 20px;
+      min-width: 250px; // Чтобы карточки не были слишком узкими
+      max-width: 100%;
+    }
+
+    &__number {
+      display: block;
+      border-bottom: #0915be solid 1px;
+      padding-bottom: 25px;
+      color: $color-brown-light;
+    //   font-weight: 600;
+      font-size: 4rem;
+      line-height: 1;
+    }
+
+    &__text {
+      // color: $color-text;
+      margin: 0;
+      max-width: 280px; // Чтобы текст не растягивался слишком сильно
+    }
+  }
+
+  // Адаптив для планшетов и телефонов
+  @media screen and (max-width: 426px) {
+    .stats {
+      &__item {
+        max-width: 200px;
+        text-align: center;
+      }
+
+      &__grid {
+        flex-direction: column;
+        align-content: center;
+      }
+
+      &__number {
+        margin-bottom: 15px;
+      }
+
+      &__text {
+        max-width: 100%;
+      }
+    }
+  }
+</style>

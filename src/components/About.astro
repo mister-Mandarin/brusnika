@@ -1,0 +1,265 @@
+---
+// Предположим, изображение видео-превью лежит в src/assets/
+// import videoPlaceholder from '../assets/video-preview.jpg';
+import { Tabs } from "webcoreui/astro";
+
+const aboutTabs = [
+  {
+    label: "О компании",
+    value: "company",
+    active: true,
+  },
+  {
+    label: "Руководство",
+    value: "management",
+  },
+  {
+    label: "Почему мы?",
+    value: "why-us",
+  },
+];
+---
+
+<section class="about-section">
+  <div class="container about-section__container">
+    <aside class="about-section__sidebar">
+      <nav class="about-sidebar-nav">
+        <ul class="about-sidebar-nav__list">
+          <li class="about-sidebar-nav__item about-sidebar-nav__item--active">
+            <a href="#company">О компании</a>
+          </li>
+          <li class="about-sidebar-nav__item">
+            <a href="#management">Руководство</a>
+          </li>
+          <li class="about-sidebar-nav__item">
+            <a href="#why-us">Почему мы?</a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+    <Tabs items={aboutTabs} theme="outline" className="about-sidebar-nav">
+      <div data-tab="company" data-active="true" class="about-section__content">
+        <div class="about-grid">
+          <div class="about-grid__header">
+            <h2 class="about-title">Рязанская компания <br /> «Брус-Ника»</h2>
+          </div>
+          <div class="about-grid__media">
+            <div class="video-block">
+              <img
+                src="/path-to-video-preview.jpg"
+                alt="Интерьер дома от компании ЭкоДом"
+                class="video-block__image"
+              />
+              <button class="video-block__play" aria-label="Воспроизвести видео"
+              ></button>
+            </div>
+          </div>
+
+          <div class="about-grid__text">
+            <p>
+              В зависимости от пожеланий клиентов, мы можем построить дом любой
+              сложности как по уже готовым, так и по индивидуальным проектам,
+              разработку которых наши специалисты также предоставляют.
+            </p>
+            <p>
+              Работаем в сфере строительства уже более 13 лет. На данный момент
+              более 500 семей стали обладателями собственных домов благодаря
+              нашей компании. За это время у нас накопился значительный опыт в
+              работе эффективного и надежного строительства домов, что вызывает
+              доверие у наших текущих и будущих клиентов.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div data-tab="management" class="about-tab-content">
+        <div class="about-grid about-grid--alt">
+          <h2 class="about-title">Евгений Халипа</h2>
+          <div class="about-grid__media">
+            <img src="/ceo.jpg" alt="Евгений Халипа" />
+          </div>
+          <div class="about-grid__text">
+            <p>Здравствуйте, меня зовут...</p>
+          </div>
+        </div>
+      </div>
+    </Tabs>
+  </div>
+</section>
+
+<style lang="scss">
+  .about-tabs-custom {
+    // На мобилках вкладки идут стандартно сверху (горизонтальный скролл)
+    :global(.w-tabs__nav) {
+      gap: 1rem;
+      margin-bottom: 2rem;
+      border: none;
+    }
+
+    :global(.w-tabs__trigger) {
+      border: none;
+      padding: 10px 0;
+      min-height: 44px; // Touch-friendly
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 1.2rem;
+
+      &[data-active] {
+        color: #fff;
+        font-weight: bold;
+      }
+    }
+  }
+  .about-section {
+    background-color: $color-bg-dark;
+    padding-block: 4rem;
+    overflow: hidden;
+    // color: $color-accent;
+
+    &__container {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+
+      // Планшет и Десктоп
+      @media (min-width: 768px) {
+        flex-direction: row;
+        align-items: flex-start;
+      }
+    }
+
+    &__sidebar {
+      @media (min-width: 768px) {
+        flex: 0 0 250px;
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+      }
+    }
+
+    &__content {
+      flex: 1;
+    }
+  }
+
+  .about-sidebar-nav {
+    &__list {
+      display: flex;
+      gap: 1.5rem;
+      padding: 0;
+      list-style: none;
+
+      @media (min-width: 768px) {
+        flex-direction: column;
+      }
+    }
+
+    &__item {
+      font-size: 1.125rem;
+
+      a {
+        display: inline-block;
+        display: flex;
+        align-items: center;
+        transition: $transition-base;
+        min-height: 44px; // Touch-friendly
+        color: $color-text-dim;
+        text-decoration: none;
+
+        &:hover {
+          //   color: $color-accent;
+        }
+      }
+
+      &--active a {
+        // color: $color-accent;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-areas:
+      "header"
+      "media"
+      "text";
+    gap: 2rem;
+
+    @media (min-width: 1024px) {
+      grid-template-columns: 1fr 1.2fr;
+      grid-template-areas:
+        "header media"
+        "text media"; // Текст под заголовком, видео справа на две строки
+      align-items: start;
+    }
+
+    &__header {
+      grid-area: header;
+    }
+    &__media {
+      grid-area: media;
+    }
+    &__text {
+      grid-area: text;
+    }
+  }
+
+  .about-title {
+    color: white;
+    font-weight: 300;
+    font-family: $font-tertiary;
+  }
+
+  .video-block {
+    position: relative;
+    border-radius: 12px;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+
+    &__image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &__play {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      backdrop-filter: blur(4px);
+      transition: $transition-base;
+      cursor: pointer;
+      border: 1px solid white;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      width: 64px;
+      height: 64px;
+
+      &::after {
+        display: inline-block;
+        margin-left: 5px;
+        border-width: 10px 0 10px 18px;
+        border-style: solid;
+        border-color: transparent transparent transparent white;
+        content: "";
+      }
+
+      &:hover {
+        scale: 1.1;
+        background: rgba(255, 255, 255, 0.4);
+      }
+    }
+  }
+
+  .about-grid__text {
+    p {
+      margin-bottom: 1.5rem;
+      color: $color-text-dim;
+      font-size: 1rem;
+      line-height: 1.6;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+</style>

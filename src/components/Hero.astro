@@ -3,7 +3,8 @@
     <div class="hero__content">
       <h1 class="hero__title">Построй свою мечту</h1>
       <p class="hero__description">
-        Наш сервис каждый день помогает купить минимум один домокомплект!
+        Поомжем построить дом крутой. Текст длинный, но смысловый. Текст
+        длинный, но смысловый. Красивый в несколько строк.
       </p>
       <button type="button" class="button">
         <a href="#" class="btn btn-brown-dark">Заказать звонок</a>
@@ -30,6 +31,7 @@
     height: 100vh;
 
     &__content {
+      margin-bottom: 2rem;
       max-width: 35rem;
       color: #fff;
     }
@@ -59,17 +61,17 @@
 
   @media screen and (max-width: 768px) {
     .hero {
-      align-items: flex-start;
+      align-items: flex-end;
       background:
         linear-gradient(
           to bottom,
           rgba(0, 0, 0, 0.7) 0%,
           rgba(0, 0, 0, 0.5) 100%
         ),
-        url("../assets/unnamed.jpg") no-repeat;
-      padding-top: 90px;
-      height: 60vh;
-      text-align: center;
+        url("../assets/unnamed.jpg") left/cover no-repeat;
+      // padding-top: 90px;
+      height: 70vh;
+      // text-align: center;
     }
   }
 </style>
