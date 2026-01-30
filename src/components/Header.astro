@@ -5,7 +5,8 @@ import { Image } from "astro:assets";
 
 <header class="header" id="header">
   <nav class="navbar container">
-    <a href="/" class="brand"><Image src={LogoMain} alt="logo" width={100}/></a>
+    <a href="/" class="brand"><Image src={LogoMain} alt="logo" width={100} /></a
+    >
     <div class="burger" id="burger">
       <span class="burger-line"></span>
       <span class="burger-line"></span>
@@ -22,9 +23,9 @@ import { Image } from "astro:assets";
       </ul>
     </div>
     <a href="#">
-        <i class="fa-solid fa-phone btn-phone"></i>
-      </a>
-    <button type="button" class="button">
+      <i class="fa-solid fa-phone btn-phone"></i>
+    </a>
+    <button type="button" class="button-hidden">
       <a href="#" class="btn btn-brown-dark">Заказать звонок</a>
     </button>
     <span class="overlay"></span>
@@ -32,8 +33,7 @@ import { Image } from "astro:assets";
 </header>
 
 <style lang="scss">
-  .button {
-
+  .button-hidden {
     @media screen and (max-width: 768px) {
       display: none;
       visibility: hidden;
@@ -51,8 +51,8 @@ import { Image } from "astro:assets";
     padding-inline: 1.25rem;
     padding-block: 0.5rem;
     line-height: 1.5;
-    text-align: center;
     font-family: $font-main;
+    text-align: center;
     white-space: nowrap;
 
     &-brown-dark {
@@ -60,7 +60,6 @@ import { Image } from "astro:assets";
       background-color: $color-brown-dark;
       color: var(--color-gray-100);
     }
-
   }
 
   .btn-phone {
@@ -76,9 +75,10 @@ import { Image } from "astro:assets";
     z-index: 100;
     transition: all 0.5s ease;
     margin: 0 auto;
+    box-shadow: $shadow-medium;
+    background-color: white;
     width: 100%;
     height: auto;
-    box-shadow: $shadow-medium;
   }
 
   .navbar {
@@ -91,16 +91,16 @@ import { Image } from "astro:assets";
 
   .menu {
     position: fixed;
+    top: 50px;
     left: -100%;
-    top: 65px;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease-in-out;
     box-shadow: var(--shadow-medium);
     background-color: white;
     padding-block: 4rem;
+    padding: 10px;
     width: 100%;
     height: auto;
     overflow: hidden;
-    padding: 10px;
 
     &.is-active {
       top: 50px;
@@ -129,9 +129,9 @@ import { Image } from "astro:assets";
     // Media query breakpoint
     @media screen and (min-width: 48rem) {
       display: none;
-      visibility: hidden;
       position: relative;
       top: initial;
+      visibility: hidden;
       transition: unset;
       // margin-left: auto;
       box-shadow: unset;
@@ -212,7 +212,7 @@ import { Image } from "astro:assets";
     position: fixed;
     opacity: 0.5;
     z-index: -2;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.3s ease-in-out;
     inset: 0;
     background-color: black;
     width: 100%;
@@ -220,7 +220,7 @@ import { Image } from "astro:assets";
 
     &.is-active {
       display: block;
-      margin-top: 65px;
+      margin-top: 50px;
     }
   }
 </style>

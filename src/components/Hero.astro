@@ -1,0 +1,75 @@
+<section class="hero">
+  <div class="container">
+    <div class="hero__content">
+      <h1 class="hero__title">Построй свою мечту</h1>
+      <p class="hero__description">
+        Наш сервис каждый день помогает купить минимум один домокомплект!
+      </p>
+      <button type="button" class="button">
+        <a href="#" class="btn btn-brown-dark">Заказать звонок</a>
+      </button>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  .hero {
+    display: flex;
+    position: relative;
+    align-items: center;
+
+    background:
+      linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.9) 0%,
+        rgba(0, 0, 0, 0.4) 50%,
+        transparent 100%
+      ),
+      url("../assets/unnamed.jpg") center/cover no-repeat;
+    width: 100%;
+    height: 100vh;
+
+    &__content {
+      max-width: 35rem;
+      color: #fff;
+    }
+
+    &__title {
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      line-height: 1.1;
+      font-family: $font-secondary;
+      text-wrap: balance;
+    }
+
+    &__description {
+      opacity: 0.9;
+      max-width: 30rem;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      line-height: 1.4;
+      text-wrap: pretty;
+    }
+  }
+
+  .button {
+    border-radius: 3px;
+    background: rgba(169, 133, 103, 0.3);
+  }
+
+  @media screen and (max-width: 768px) {
+    .hero {
+      align-items: flex-start;
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.7) 0%,
+          rgba(0, 0, 0, 0.5) 100%
+        ),
+        url("../assets/unnamed.jpg") no-repeat;
+      padding-top: 90px;
+      height: 60vh;
+      text-align: center;
+    }
+  }
+</style>
